@@ -18,10 +18,6 @@ header{
 
 }
 
-.menu-art {
-
-}
-
 .menu-art *{
     margin: 0;
     padding: 0;
@@ -34,10 +30,7 @@ header{
 
 .menu-art > ul{
     display: flex;
-
     justify-content:flex-start;
-    align-items: stretch;
-
 }
 .menu-art > ul li{
 
@@ -67,7 +60,8 @@ header{
     transition: all 0.3s ease;
 }
 
-.menu-art > ul li > a i.fa{
+.menu-art > ul li > a i.fa,
+.menu-art label.toggleMenu > i.fa{
     position: absolute;
     top: 15px;
     left: 12px;
@@ -88,7 +82,6 @@ header{
    position: absolute;/* */
     min-width: 150px;
     display: none;
-    z-index: 100;
 }
 .menu-art li > ul li{
     border: 1px solid #c7c8ca;
@@ -106,4 +99,86 @@ header{
 
 .menu-art li:hover > ul{
     display: block;
+}
+
+
+
+
+.menu-art [type="checkbox"],
+.menu-art label.toggleSubmenu{
+    display: none;
+}
+.menu-art label.toggleMenu{
+
+    background: rgb(201,201,201);
+    background: linear-gradient(to bottom,  rgba(201,201,201,1) 0%,rgba(246,246,246,1) 2%,rgba(196,197,199,1) 98%,rgba(117,117,119,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+
+
+    display:none;
+    padding: 15px 50px 15px 60px;/*настройки ширины меню*/
+    text-transform: uppercase;
+    font-size: 14px;
+    cursor: pointer;
+    position: relative;
+}
+
+
+
+
+@media all and (max-width: 800px) {
+    .menu-art {
+        overflow: hidden;
+    }
+    .menu-art ul{
+        display:none;
+        max-height: 0;
+        transition: max-height 0.3s;
+    }
+    .menu-art li>ul li ul{
+        position: absolute;
+        right: auto;
+        top: auto;
+    }
+    .menu-art label.toggleMenu{
+        display:block;
+    }
+    input.toggleMenu:checked + label.toggleMenu{
+        background: #000;
+        color: #fff;
+    }
+    /*sub menu*/
+    .menu-art input.toggleMenu:checked ~ ul,
+    .menu-art input.toggleSubmenu:checked ~ ul{
+        display: block;
+        position: relative;
+        max-height: 5000px;
+        transition: max-height 2s ease-in;
+    }
+    .menu-art label.toggleSubmenu{
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+        display: block;
+    }
+    .menu-art input.toggleSubmenu:checked ~ a{
+        background: #454547;
+        color: #fff;
+    }
+    .menu-art label.toggleSubmenu .fa:before{
+        content: "\f0d7";
+        color: #454547;
+    }
+    .menu-art label.toggleSubmenu .fa{
+        position: absolute;
+        top: 15px;
+        right: 30px;
+    }
+    .menu-art input.toggleSubmenu:checked ~ label.toggleSubmenu .fa::before{
+        content: "\f0d8";
+        color: #ffffff;
+    }
+
 }
