@@ -34,6 +34,7 @@ header{
 }
 .menu-art > ul li{
 
+
     position: relative;
     border-right: 1px solid #c7c8ca;
 }
@@ -79,7 +80,8 @@ header{
 /*sub menu*/
 
 .menu-art li ul{
-   position: absolute;/* */
+    z-index:1000;
+    position: absolute;
     min-width: 150px;
     display: none;
 }
@@ -133,6 +135,9 @@ header{
         display:none;
         max-height: 0;
         transition: max-height 0.3s;
+    }
+    .menu-art li ul{
+        z-index:0;
     }
     .menu-art li>ul li ul{
         position: absolute;
